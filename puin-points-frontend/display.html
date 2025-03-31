@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PUIN POINTS – Display</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="screen">
+    <h1>PUIN-scherm <span id="puntNummer">?</span></h1>
+    <p>Actieve groep-signaal:</p>
+    <h2 id="displayEmoji">❓</h2>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Laad het juiste punt vanuit de URL en haal signalen op
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const pointId = params.get("point");
+
+      document.getElementById("puntNummer").innerText = pointId || "?";
+
+      if (pointId) {
+        loadSignal(pointId);
+
+        // Optioneel: elke 10 seconden opnieuw ophalen
+        setInterval(() => loadSignal(pointId), 10000);
+      }
+    });
+  </script>
+</body>
+</html>
