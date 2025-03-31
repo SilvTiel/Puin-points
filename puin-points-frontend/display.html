@@ -9,13 +9,12 @@
 <body>
   <div class="screen">
     <h1>PUIN-scherm <span id="puntNummer">?</span></h1>
-    <p>Actieve groep-signaal:</p>
-    <h2 id="displayEmoji">❓</h2>
+    <p>Actieve signalen van groepen:</p>
+    <div id="emojiList" class="emoji-container"></div>
   </div>
 
   <script src="script.js"></script>
   <script>
-    // Laad het juiste punt vanuit de URL en haal signalen op
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
       const pointId = params.get("point");
@@ -23,10 +22,8 @@
       document.getElementById("puntNummer").innerText = pointId || "?";
 
       if (pointId) {
-        loadSignal(pointId);
-
-        // Optioneel: elke 10 seconden opnieuw ophalen
-        setInterval(() => loadSignal(pointId), 10000);
+        loadSignalList(pointId);
+        setInterval(() => loadSignalList(pointId), 10000);
       }
     });
   </script>
