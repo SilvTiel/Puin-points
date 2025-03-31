@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUIN Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ PUIN Admin Dashboard</h1>
+    <button onclick="resetDatabase()">🗑️ Leeg Database</button>
+
+    <h2>👥 Geregistreerde Groepen</h2>
+    <table id="groupTable">
+      <thead>
+        <tr>
+          <th>Groepsnaam</th>
+          <th>Emoji</th>
+          <th>Aantal leden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Groepen worden hier toegevoegd -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const API = "http://localhost:3000";
+
+    async function fetchGroups() {
+      const response = await fetch(`${API}/groups`);
+      const data = await response.json();
+
+      const tbody = document.querySelector("#groupTable tbody");
+      tbody.innerHTML = "";
+
+      data.forEach(group => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${group.name}</td>
+          <td>${group.emoji}</td>
+          <td>${group.members.length}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    async function resetDatabase() {
+      if (confirm("Weet je zeker dat je de hele database wilt leegmaken?")) {
+        await fetch(`${API}/groups`, { method: "DELETE" });
+        await fetch(`${API}/signals`, { method: "DELETE" });
+        alert("Database is geleegd.");
+        fetchGroups();
+      }
+    }
+
+    // Initiale laadactie
+    fetchGroups();
+  </script>
+</body>
+</html>

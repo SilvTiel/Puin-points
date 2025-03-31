@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Group = require("../models/Group");
 
+// ✅ Alle groepen ophalen (voor admin.html)
+router.get("/", async (req, res) => {
+  const groups = await Group.find({});
+  res.json(groups);
+});
+
 // ✅ Nieuwe groep aanmaken
 router.post("/", async (req, res) => {
   const { name, emoji, event } = req.body;
@@ -33,5 +39,12 @@ router.post("/:id/join", async (req, res) => {
   await group.save();
   res.json(group);
 });
+
+// Verwijder alle groepen (admin reset)
+router.delete("/", async (req, res) => {
+  await Group.deleteMany({});
+  res.status(200).json({ message: "Alle groepen verwijderd." });
+});
+
 
 module.exports = router;

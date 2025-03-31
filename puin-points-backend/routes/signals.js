@@ -38,4 +38,10 @@ router.get("/display/:pointId", async (req, res) => {
   res.json(signals);
 });
 
+// Verwijder alle signalen (admin reset)
+router.delete("/", async (req, res) => {
+  await Signal.deleteMany({});
+  res.status(200).json({ message: "Alle signalen verwijderd." });
+});
+
 module.exports = router;
