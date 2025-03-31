@@ -30,15 +30,24 @@ router.get("/:id", async (req, res) => {
   res.json(group);
 });
 
-// Lid toevoegen aan groep
+// Voeg een lid toe aan een groep
 router.post("/:id/join", async (req, res) => {
   const { memberName } = req.body;
+  const name = memberName?.trim(); // spaties eruit
+  if (!name) return res.status(400).json({ message: "Naam is verplicht." });
+
   const group = await Group.findById(req.params.id);
   if (!group) return res.status(404).send("Group not found");
-  group.members.push(memberName);
-  await group.save();
-  res.json(group);
+
+  // voorkomt dubbele toevoeging
+  if (!group.members.includes(name)) {
+    group.members.push(name);
+    await group.save();
+  }
+
+  res.status(200).json(group);
 });
+
 
 // Verwijder alle groepen (admin reset)
 router.delete("/", async (req, res) => {

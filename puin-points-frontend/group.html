@@ -2,52 +2,56 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PUIN POINTS – Groepspagina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUIN Groep</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h2>Groep: <span id="groupNameDisplay">[Naam]</span></h2>
-    <h3>Emoji: <span id="emojiDisplay">[💫🐍]</span></h3>
+    <div class="group-header">
+      <h1 id="groupName">PUIN Groep</h1>
+      <p id="groupId" class="group-id"></p>
+      <p id="groupEmoji" class="group-emoji"></p>
+    </div>
 
-    <h3>📍 Stuur een signaal</h3>
+    <section class="card">
+      <h3>👥 Groepsleden</h3>
+      <ul id="memberList" class="member-list"></ul>
+    </section>
 
-    <label for="screenSelect">Kies PUIN-punt:</label>
-    <select id="screenSelect">
-      <option value="1">PUIN-punt 1</option>
-      <option value="2">PUIN-punt 2</option>
-      <option value="3">PUIN-punt 3</option>
-      <option value="4">PUIN-punt 4</option>
-    </select>
+    <section id="shareButton" class="card" style="display: none;">
+      <button class="primary-btn" onclick="copyShareLink()">🔗 Deel deze groep</button>
+      <p id="shareLinkMsg" class="info-msg"></p>
+    </section>
 
-    <label for="durationSelect">Kies duur (minuten):</label>
-    <select id="durationSelect">
-      <option value="5">5 min</option>
-      <option value="10">10 min</option>
-      <option value="15">15 min</option>
-    </select>
+    <section id="joinSection" class="card" style="display: none;">
+      <input type="text" id="newMemberName" placeholder="Jouw naam om deel te nemen" class="input" />
+      <button class="primary-btn" onclick="joinFromShare()">👋 Word lid</button>
+    </section>
 
-    <button onclick="sendSignal()">🚀 Stuur signaal</button>
+    <section class="card signal-section">
+      <h3>📍 Stuur een signaal</h3>
 
-    <p id="confirmation"></p>
+      <label for="screenSelect">Kies PUIN-punt:</label>
+      <select id="screenSelect" class="input">
+        <option value="1">PUIN-punt 1</option>
+        <option value="2">PUIN-punt 2</option>
+        <option value="3">PUIN-punt 3</option>
+        <option value="4">PUIN-punt 4</option>
+      </select>
 
-    <a href="display.html?point=1" class="button">Bekijk PUIN-scherm 1</a>
-    <a href="display.html?point=2" class="button">Bekijk PUIN-scherm 2</a>
-    <a href="display.html?point=3" class="button">Bekijk PUIN-scherm 3</a>
-    <a href="display.html?point=4" class="button">Bekijk PUIN-scherm 4</a>
+      <label for="durationSelect">Kies duur (minuten):</label>
+      <select id="durationSelect" class="input">
+        <option value="5">5 min</option>
+        <option value="10">10 min</option>
+        <option value="15">15 min</option>
+      </select>
+
+      <button class="primary-btn" onclick="sendSignal()">🚀 Stuur signaal</button>
+      <p id="confirmation" class="info-msg"></p>
+    </section>
   </div>
 
   <script src="script.js"></script>
-  <script>
-    // Toon emoji en groepsnaam bij openen
-    document.addEventListener("DOMContentLoaded", () => {
-      const groupName = localStorage.getItem("groupId") || "[groep]";
-      const emoji = localStorage.getItem("emoji") || "❓";
-
-      document.getElementById("groupNameDisplay").innerText = groupName;
-      document.getElementById("emojiDisplay").innerText = emoji;
-    });
-  </script>
 </body>
 </html>

@@ -1,76 +1,129 @@
 body {
-    font-family: sans-serif;
-    background-color: #111;
-    color: white;
-    margin: 0;
-    padding: 2rem;
-    text-align: center;
-  }
+  font-family: sans-serif;
+  background-color: #111;
+  color: white;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .container {
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  input, select {
-    display: block;
-    margin: 1rem auto;
-    padding: 0.5rem;
-    width: 80%;
-    font-size: 1.1rem;
-  }
-  
-  .button, button {
-    background-color: #fff;
-    color: #111;
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
-    border: none;
-    margin-top: 1rem;
-    cursor: pointer;
-  }
-  
-  .screen {
-    padding: 2rem;
-  }
-  
-  #displayEmoji {
-    font-size: 4rem;
-    margin-top: 1rem;
-  }
-  
-  .emoji-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 0 2rem;
-  }
-  .emoji-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    border: 2px solid white;
-    border-radius: 12px;
-    padding: 10px 15px;
-    margin: 10px;
-    max-width: 90vw;
-    background-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    font-size: 2.5rem;
-    animation: pulse 1.5s infinite;
-  }
-  
-  @keyframes pulse {
-    0% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-    50% { box-shadow: 0 0 20px rgba(255,255,255,0.6); }
-    100% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-  }
-  
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.group-id {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.group-emoji {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+input, select,
+.input {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  width: 80%;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.button, button,
+.primary-btn {
+  background-color: #fff;
+  color: #111;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.6rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover {
+  background-color: #ddd;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 0 10px rgba(255,255,255,0.08);
+}
+
+.member-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.member-list li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.info-msg {
+  font-size: 0.85rem;
+  color: #81d4fa;
+  margin-top: 0.5rem;
+}
+
+.screen {
+  padding: 2rem;
+}
+
+#displayEmoji {
+  font-size: 4rem;
+  margin-top: 1rem;
+}
+
+.emoji-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+.emoji-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 10px;
+  max-width: 90vw;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  font-size: 2.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 20px rgba(255,255,255,0.6); }
+  100% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+}

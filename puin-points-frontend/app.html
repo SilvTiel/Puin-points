@@ -2,17 +2,28 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PUIN POINTS - App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUIN Groep Aanmaken</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
-    <h2>Maak je groep aan</h2>
-    <input type="text" id="groupName" placeholder="Groepsnaam" />
-    <input type="text" id="emojiCombo" placeholder="Emoji-combinatie (bijv. 💫🐍)" />
-    <button onclick="createGroup()">✅ Groep aanmaken</button>
+    <section class="card">
+      <h1>🎉 Start een PUIN Groep</h1>
+
+      <label for="groupName">Groepsnaam</label>
+      <input class="input" type="text" id="groupName" placeholder="Bijv. Team Chaos" required />
+
+      <label for="emojiCombo">Emoji-combinatie (max 2)</label>
+      <input class="input" type="text" id="emojiCombo" placeholder="Bijv. 💫🐍" required />
+
+      <label for="creatorName">Jouw naam</label>
+      <input class="input" type="text" id="creatorName" placeholder="Bijv. Lotte" required />
+
+      <button class="primary-btn" onclick="createGroup()">🚀 Maak groep aan</button>
+    </section>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
