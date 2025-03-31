@@ -1,0 +1,41 @@
+body {
+    font-family: sans-serif;
+    background-color: #111;
+    color: white;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  input {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    width: 80%;
+    font-size: 1.1rem;
+  }
+  
+  .button, button {
+    background-color: #fff;
+    color: #111;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
+  .screen {
+    margin-top: 5rem;
+  }
+  
+  #displayEmoji {
+    font-size: 4rem;
+    margin-top: 1rem;
+  }
+  
