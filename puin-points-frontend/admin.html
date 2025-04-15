@@ -68,6 +68,68 @@
       }
     }
 
+    // WebSocket connection for real-time updates
+    const socket = new WebSocket('ws://your-websocket-server-url');
+    
+    socket.onopen = function(event) {
+      console.log('WebSocket connection established');
+    };
+    
+    socket.onmessage = function(event) {
+      const newSignal = JSON.parse(event.data);
+      // Update the UI with the new signal
+      addNewSignal(newSignal);
+    };
+    
+    socket.onerror = function(error) {
+      console.error('WebSocket error:', error);
+    };
+    
+    function addNewSignal(signal) {
+      const signalContainer = document.getElementById('signal-container');
+      const signalElement = document.createElement('div');
+      signalElement.className = 'signal-item new-signal';
+      signalElement.innerHTML = `
+        <p><strong>Location:</strong> ${signal.location}</p>
+        <p><strong>Time:</strong> ${new Date(signal.timestamp).toLocaleString()}</p>
+        <p><strong>Status:</strong> ${signal.status}</p>
+      `;
+      signalContainer.prepend(signalElement); // Add new signals at the top
+      
+      // Highlight new signals briefly
+      setTimeout(() => {
+        signalElement.classList.remove('new-signal');
+      }, 3000);
+    }
+
+    function debugSignalFlow() {
+      console.log('Checking for new signals...');
+      fetch('/api/signals/debug')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Debug data received:', data);
+          // Display debug info on page
+          document.getElementById('debug-info').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+          console.error('Debug fetch error:', error);
+        });
+    }
+    
+    // Add a debug button to the admin interface
+    const debugButton = document.createElement('button');
+    debugButton.textContent = 'Debug Signal Flow';
+    debugButton.onclick = debugSignalFlow;
+    document.querySelector('.admin-controls').appendChild(debugButton);
+    
+    // Create a debug info display area
+    const debugInfo = document.createElement('pre');
+    debugInfo.id = 'debug-info';
+    debugInfo.style.backgroundColor = '#f0f0f0';
+    debugInfo.style.padding = '10px';
+    debugInfo.style.marginTop = '20px';
+    document.querySelector('.admin-panel').appendChild(debugInfo);
+
     fetchGroups();
   </script>
 </body>
