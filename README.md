@@ -90,7 +90,8 @@ MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/puinpoints
 
 4. **Start the server**
 ```bash
-node index.js
+cd puin-points-backend
+node server.js
 ```
 
 5. **Open the frontend**
